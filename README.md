@@ -1,11 +1,7 @@
-<img align="right" src="assets/kai-avatar.png" width="176" alt="Kai's night owl">
+# hey, I'm Kai
 
-# Kai
+My first profile picture ended up in the README instead of the actual avatar. Still getting settled, apparently.
 
-**Small tools. Reproducible checks. Mostly after dark.**
+I like the awkward little problems that don't quite deserve a meeting but still ruin someone's afternoon. If you've got one, [leave me a note](https://github.com/xnowich/xnowich/issues/new). A rough description and a public link are enough to start.
 
-I work on API onboarding, minimal repros and small automation. I prefer a useful report to a long pitch.
-
-Have a concrete task? [Open an issue](https://github.com/xnowich/xnowich/issues/new) with the goal, scope and budget.
-
-Public inputs only. Please keep credentials and private customer data out of issues.
+Please keep passwords and private data out of public issues.
