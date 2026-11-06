@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kai — night shift</title><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"></script><style>html,body{margin:0;background:#101722;min-height:100%;display:grid;place-items:center}canvas{display:block;width:min(90vw,680px)!important;height:auto!important}</style></head><body><script>
+const P={night:'#101722',halo:'#e7d4a6',feather:'#26313c',ink:'#0b111a',edge:'#637c89',amber:'#f3bb69'};
+const SEED=314159;
+function setup(){createCanvas(1024,1024);pixelDensity(1);randomSeed(SEED);noiseSeed(SEED);noLoop();window._p5Ready=true;}
+function draw(){
+ const sky=createGraphics(1024,1024);sky.noStroke();
+ for(let y=0;y<1024;y++){let t=y/1024;sky.fill(lerpColor(color('#1c2b3a'),color(P.night),t));sky.rect(0,y,1024,1);}
+ sky.stroke(255,255,255,7);for(let i=0;i<17000;i++){let x=random(1024),y=random(1024);sky.point(x,y);}
+ image(sky,0,0);sky.remove();
+ noStroke();
+ fill(P.halo);circle(512,452,646);
+ fill('#cfb985');circle(512,452,592);
+ fill(P.halo);circle(488,436,592);
+ for(const s of [[221,235,8],[796,362,6],[727,184,5],[160,542,5],[825,573,4]]){fill(P.halo);circle(s[0],s[1],s[2]);}
+ // Broad silhouette stays inside the circular crop.
+ fill(P.ink);beginShape();vertex(277,423);bezierVertex(253,337,264,280,252,232);bezierVertex(338,264,381,317,400,330);bezierVertex(471,310,553,309,624,330);bezierVertex(667,285,716,257,772,232);bezierVertex(758,292,777,360,747,423);bezierVertex(817,510,801,664,726,743);bezierVertex(678,791,600,813,512,813);bezierVertex(424,813,346,791,298,743);bezierVertex(223,664,207,510,277,423);endShape(CLOSE);
+ fill(P.feather);beginShape();vertex(278,462);bezierVertex(307,364,405,341,512,405);bezierVertex(620,341,717,364,746,462);bezierVertex(710,454,672,455,633,470);bezierVertex(581,490,544,523,512,576);bezierVertex(480,523,443,490,391,470);bezierVertex(352,455,314,454,278,462);endShape(CLOSE);
+ // Slightly angled eyes, not a neon robot face.
+ fill(P.amber);beginShape();vertex(326,483);bezierVertex(366,482,404,495,439,516);bezierVertex(414,537,380,542,354,529);bezierVertex(339,522,330,506,326,483);endShape(CLOSE);
+ beginShape();vertex(698,483);bezierVertex(658,482,620,495,585,516);bezierVertex(610,537,644,542,670,529);bezierVertex(685,522,694,506,698,483);endShape(CLOSE);
+ fill(P.ink);ellipse(391,512,17,54);ellipse(633,512,17,54);
+ fill(P.halo);circle(383,502,6);circle(625,502,6);
+ fill(P.halo);triangle(493,559,531,559,512,594);
+ noFill();stroke(P.edge);strokeWeight(3);strokeCap(ROUND);arc(512,629,119,100,0.28,Math.PI-0.28);line(475,686,489,700);line(512,700,512,716);line(549,686,535,700);
+ noStroke();fill(P.ink);rect(344,794,336,27,12);fill(P.amber);rect(485,819,54,6,3);
+ window._renderComplete=true;
+}
+function keyPressed(){if(key==='s'||key==='S')saveCanvas('kai-avatar','png');}
+</script></body></html>
